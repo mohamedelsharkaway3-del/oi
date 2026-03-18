@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="إيجبت دودو تراڤيل — أفضل شركة سياحة للعمرة والحج في مصر. باقات متميزة بأسعار تنافسية مع خدمة 24/7.">
+  <meta name="keywords" content="عمرة, حج, رحلات دينية, إيجبت دودو تراڤيل, Egypt Dodo Travel">
+  <meta name="theme-color" content="#d4af37">
+  <title>🕌 إيجبت دودو تراڤيل | Egypt Dodo Travel</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="bg-animation"></div>
+<div class="bg-stars"></div>
+
+<!-- ════════ HEADER ════════ -->
+<header id="mainHeader">
+  <a href="#home" class="logo-wrap" id="siteLogo">
+    <div class="logo-icon">🕌</div>
+    <div class="logo-text gradient-text">
+      إيجبت دودو تراڤيل
+      <span>Egypt Dodo Travel</span>
+    </div>
+  </a>
+
+  <nav>
+    <ul>
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#packages">البرامج</a></li>
+      <li><a href="#booking">الحجز</a></li>
+      <li><a href="#calculator">الأسعار</a></li>
+      <li><a href="#gallery">صورك</a></li>
+      <li><a href="#reviews">آراء العملاء</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-actions">
+    <a href="https://wa.me/201093319693" target="_blank" class="btn-gold" style="padding:10px 22px;font-size:0.9rem">
+      <i class="fab fa-whatsapp"></i> واتساب
+    </a>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<div id="mobileNav" class="mobile-nav">
+  <a href="#home" onclick="closeMobileMenu()"><i class="fas fa-home"></i> الرئيسية</a>
+  <a href="#packages" onclick="closeMobileMenu()"><i class="fas fa-suitcase"></i> البرامج والباقات</a>
+  <a href="#booking" onclick="closeMobileMenu()"><i class="fas fa-calendar-check"></i> احجز الآن</a>
+  <a href="#calculator" onclick="closeMobileMenu()"><i class="fas fa-calculator"></i> احسب التكلفة</a>
+  <a href="#gallery" onclick="closeMobileMenu()"><i class="fas fa-images"></i> صور رحلتك</a>
+  <a href="#reviews" onclick="closeMobileMenu()"><i class="fas fa-star"></i> آراء العملاء</a>
+  <a href="#contact" onclick="closeMobileMenu()"><i class="fas fa-phone"></i> تواصل معنا</a>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<section id="home" class="hero">
+  <div id="heroCover" class="hero-cover"></div>
+  <div class="pattern-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <i class="fas fa-star"></i>
+      <span>أكثر من 5000 حاج ومعتمر وثقوا بنا</span>
+      <i class="fas fa-star"></i>
+    </div>
+
+    <h1 class="hero-title gradient-text">
+      رحلتك الروحانية<br>تبدأ من هنا
+    </h1>
+
+    <p>نقدم لك أفضل باقات العمرة والحج بأسعار تناسب الجميع، مع فريق متخصص يرعى كل تفاصيل رحلتك من الألف إلى الياء</p>
+
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-gold" style="font-size:1.1rem;padding:16px 42px">
+        <i class="fas fa-calendar-check"></i>
+        احجز رحلتك الآن
+      </a>
+      <a href="#packages" class="btn-outline" style="font-size:1rem;padding:15px 36px">
+        <i class="fas fa-eye"></i>
+        استعرض الباقات
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>اكتشف المزيد</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ════════ STATS ════════ -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <span class="stat-icon">👥</span>
+      <span class="stat-number counter" data-target="5000" data-suffix="+">0</span>
+      <span class="stat-label">حاج ومعتمر</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-icon">✈️</span>
+      <span class="stat-number counter" data-target="200" data-suffix="+">0</span>
+      <span class="stat-label">رحلة ناجحة</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-icon">⭐</span>
+      <span class="stat-number counter" data-target="99" data-suffix="%">0</span>
+      <span class="stat-label">نسبة رضا العملاء</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-icon">🏆</span>
+      <span class="stat-number counter" data-target="12" data-suffix="">0</span>
+      <span class="stat-label">سنة خبرة</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-icon">🕌</span>
+      <span class="stat-number counter" data-target="4" data-suffix="">0</span>
+      <span class="stat-label">باقات متميزة</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PACKAGES ════════ -->
+<section id="packages">
+  <h2 class="section-title gradient-text reveal">برامجنا وباقاتنا</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <p class="section-subtitle reveal">اختر الباقة التي تناسبك من بين برامجنا المتنوعة، كل برنامج يشمل أفضل الخدمات بأسعار تنافسية</p>
+
+  <div class="packages-grid" id="packagesContainer">
+
+    <div class="package-card reveal">
+      <span class="pkg-icon">✈️</span>
+      <div class="pkg-name">عمرة الاقتصادية</div>
+      <div class="pkg-stars">★★★</div>
+      <span class="pkg-price">8,500 <span>ج.م</span></span>
+      <ul class="pkg-features">
+        <li><i class="fas fa-hotel"></i> فندق 3 نجوم قريب من الحرم</li>
+        <li><i class="fas fa-plane"></i> تذاكر طيران ذهاب وإياب</li>
+        <li><i class="fas fa-bus"></i> مواصلات مريحة وآمنة</li>
+        <li><i class="fas fa-utensils"></i> وجبتان يومياً</li>
+        <li><i class="fas fa-user-tie"></i> مرشد سياحي متخصص</li>
+        <li><i class="fas fa-passport"></i> تسهيل إجراءات التأشيرة</li>
+      </ul>
+      <button class="btn-gold" style="width:100%" onclick="bookPackage('عمرة الاقتصادية')">
+        <i class="fas fa-calendar-check"></i> احجز الآن
+      </button>
+    </div>
+
+    <div class="package-card featured reveal">
+      <span class="pkg-icon">💎</span>
+      <div class="pkg-name">عمرة البريميوم</div>
+      <div class="pkg-stars">★★★★</div>
+      <span class="pkg-price">18,000 <span>ج.م</span></span>
+      <ul class="pkg-features">
+        <li><i class="fas fa-hotel"></i> فندق 4 نجوم بالقرب من الحرم</li>
+        <li><i class="fas fa-plane"></i> طيران بزنس كلاس</li>
+        <li><i class="fas fa-car"></i> سيارة خاصة 24/7</li>
+        <li><i class="fas fa-utensils"></i> ثلاث وجبات يومياً</li>
+        <li><i class="fas fa-crown"></i> خدمة VIP كاملة</li>
+        <li><i class="fas fa-gift"></i> هدايا ترحيبية مميزة</li>
+      </ul>
+      <button class="btn-gold" style="width:100%" onclick="bookPackage('عمرة البريميوم')">
+        <i class="fas fa-calendar-check"></i> احجز الآن
+      </button>
+    </div>
+
+    <div class="package-card reveal">
+      <span class="pkg-icon">🌙</span>
+      <div class="pkg-name">عمرة رمضان</div>
+      <div class="pkg-stars">★★★★★</div>
+      <span class="pkg-price">22,000 <span>ج.م</span></span>
+      <ul class="pkg-features">
+        <li><i class="fas fa-hotel"></i> فندق 5 نجوم فاخر</li>
+        <li><i class="fas fa-moon"></i> إفطار وسحور في الحرم</li>
+        <li><i class="fas fa-plane"></i> درجة رجال الأعمال</li>
+        <li><i class="fas fa-concierge-bell"></i> خدمة خاصة على مدار الساعة</li>
+        <li><i class="fas fa-book-open"></i> جلسات دعوية وتعليمية</li>
+        <li><i class="fas fa-camera"></i> تصوير احترافي</li>
+      </ul>
+      <button class="btn-gold" style="width:100%" onclick="bookPackage('عمرة رمضان')">
+        <i class="fas fa-calendar-check"></i> احجز الآن
+      </button>
+    </div>
+
+    <div class="package-card reveal">
+      <span class="pkg-icon">🕋</span>
+      <div class="pkg-name">رحلة الحج</div>
+      <div class="pkg-stars">★★★★★</div>
+      <span class="pkg-price">45,000 <span>ج.م</span></span>
+      <ul class="pkg-features">
+        <li><i class="fas fa-hotel"></i> فندق فاخر 5 نجوم</li>
+        <li><i class="fas fa-plane"></i> طيران ودرجة عالية</li>
+        <li><i class="fas fa-truck-medical"></i> تأمين طبي شامل</li>
+        <li><i class="fas fa-user-md"></i> طبيب مرافق طوال الرحلة</li>
+        <li><i class="fas fa-shield-alt"></i> متابعة كاملة لجميع المشاعر</li>
+        <li><i class="fas fa-certificate"></i> شهادة وإهداء تذكاري</li>
+      </ul>
+      <button class="btn-gold" style="width:100%" onclick="bookPackage('رحلة الحج')">
+        <i class="fas fa-calendar-check"></i> احجز الآن
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ BOOKING ════════ -->
+<section id="booking" class="booking-section">
+  <h2 class="section-title gradient-text reveal">احجز رحلتك الآن</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+
+  <div class="booking-wrapper">
+    <div class="booking-info reveal">
+      <h2 class="gradient-text">لماذا تختار إيجبت دودو تراڤيل؟</h2>
+      <p style="color:var(--text-sec);margin-top:12px;line-height:1.9">نقدم لك تجربة سفر روحانية لا تُنسى، مع الاهتمام بكل التفاصيل الصغيرة لتتفرغ أنت للعبادة والاستمتاع برحلتك.</p>
+
+      <div class="booking-perks">
+        <div class="perk-item">
+          <div class="perk-icon">✈️</div>
+          <div>
+            <strong>تذاكر طيران مضمونة</strong>
+            <p style="color:var(--text-sec);font-size:0.9rem;margin-top:4px">نوفر أفضل خطوط الطيران بأسعار تنافسية</p>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">🏨</div>
+          <div>
+            <strong>إقامة فندقية مريحة</strong>
+            <p style="color:var(--text-sec);font-size:0.9rem;margin-top:4px">فنادق مختارة بعناية قريبة من الحرم المشرف</p>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">🤝</div>
+          <div>
+            <strong>متابعة شخصية مستمرة</strong>
+            <p style="color:var(--text-sec);font-size:0.9rem;margin-top:4px">مرشدنا معك من مصر حتى العودة إليها</p>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">💰</div>
+          <div>
+            <strong>أسعار تنافسية وشفافة</strong>
+            <p style="color:var(--text-sec);font-size:0.9rem;margin-top:4px">لا رسوم خفية — كل شيء واضح من البداية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form reveal">
+      <h3 class="gradient-text"><i class="fas fa-calendar-check"></i> نموذج الحجز</h3>
+
+      <div id="booking-alert" class="alert"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم الكامل <span>*</span></label>
+          <input type="text" id="booking-name" class="form-input" placeholder="أدخل اسمك الكامل">
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف <span>*</span></label>
+          <input type="tel" id="booking-phone" class="form-input" placeholder="01xxxxxxxxx">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="booking-email" class="form-input" placeholder="your@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>البرنامج المطلوب <span>*</span></label>
+        <select id="booking-package" class="form-select">
+          <option value="">-- اختر البرنامج --</option>
+          <option value="عمرة الاقتصادية">✈️ عمرة الاقتصادية — 8,500 ج.م</option>
+          <option value="عمرة البريميوم">💎 عمرة البريميوم — 18,000 ج.م</option>
+          <option value="عمرة رمضان">🌙 عمرة رمضان — 22,000 ج.م</option>
+          <option value="رحلة الحج">🕋 رحلة الحج — 45,000 ج.م</option>
+          <option value="باقة العائلة">👨‍👩‍👧‍👦 باقة العائلة</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>عدد الأفراد</label>
+          <input type="number" id="booking-people" class="form-input" min="1" max="20" value="1">
+        </div>
+        <div class="form-group">
+          <label>تاريخ السفر المفضل</label>
+          <input type="date" id="booking-date" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>ملاحظات أو طلبات خاصة</label>
+        <textarea id="booking-notes" class="form-textarea" placeholder="أي طلبات أو ملاحظات إضافية..."></textarea>
+      </div>
+
+      <button id="booking-submit" class="btn-gold" style="width:100%;font-size:1.05rem;padding:16px" onclick="submitBooking()">
+        <i class="fas fa-paper-plane"></i>
+        إرسال طلب الحجز
+      </button>
+
+      <p style="text-align:center;color:var(--text-sec);font-size:0.85rem;margin-top:14px">
+        <i class="fas fa-lock" style="color:var(--primary)"></i>
+        بياناتك آمنة ومحمية تماماً — سنتواصل معك خلال 24 ساعة
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CALCULATOR ════════ -->
+<section id="calculator">
+  <h2 class="section-title gradient-text reveal">احسب تكلفة رحلتك</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <p class="section-subtitle reveal">اعرف تكلفة رحلتك بدقة قبل الحجز — التكلفة تشمل جميع الخدمات بدون رسوم مخفية</p>
+
+  <div style="max-width:700px;margin:0 auto">
+    <div class="calculator-box reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label><i class="fas fa-suitcase" style="color:var(--primary)"></i> البرنامج</label>
+          <select id="calc-package" class="form-select" onchange="calculateCost()">
+            <option value="عمرة الاقتصادية">✈️ عمرة الاقتصادية</option>
+            <option value="عمرة البريميوم">💎 عمرة البريميوم</option>
+            <option value="عمرة رمضان">🌙 عمرة رمضان</option>
+            <option value="رحلة الحج">🕋 رحلة الحج</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-users" style="color:var(--primary)"></i> عدد الأفراد</label>
+          <input type="number" id="calc-people" class="form-input" min="1" max="20" value="1" oninput="calculateCost()">
+        </div>
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-calendar" style="color:var(--primary)"></i> عدد الأيام</label>
+        <input type="range" id="calc-days" min="7" max="30" value="14" oninput="calculateCost(); document.getElementById('calc-days-label').textContent=this.value+' يوم'" style="width:100%;accent-color:var(--primary);margin:10px 0">
+        <div style="text-align:center;color:var(--primary);font-weight:700;font-size:1.1rem" id="calc-days-label">14 يوم</div>
+      </div>
+
+      <div class="calc-result" id="calc-result">
+        <div style="color:var(--text-sec);margin-bottom:6px">التكلفة الإجمالية التقريبية</div>
+        <span class="calc-result-price" id="calc-price">0 ج.م</span>
+        <div style="color:var(--text-sec);font-size:0.9rem;margin-top:8px" id="calc-detail"></div>
+        <div style="margin-top:16px;font-size:0.85rem;color:var(--text-muted)">
+          <i class="fas fa-info-circle" style="color:var(--primary)"></i>
+          السعر تقريبي — للسعر النهائي والتفاصيل تواصل معنا
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;margin-top:20px;flex-wrap:wrap">
+        <button class="btn-gold" style="flex:1" onclick="window.location.href='#booking'">
+          <i class="fas fa-calendar-check"></i> احجز بهذا السعر
+        </button>
+        <a href="https://wa.me/201093319693?text=أريد الاستفسار عن أسعار الرحلات" target="_blank" class="btn-outline" style="flex:1;justify-content:center">
+          <i class="fab fa-whatsapp"></i> استفسر عبر واتساب
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PHOTO GALLERY ════════ -->
+<section id="gallery">
+  <h2 class="section-title gradient-text reveal">صور رحلتك الخاصة</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <p class="section-subtitle reveal">ابحث عن صور رحلتك السابقة باستخدام رقم هاتفك أو اسمك</p>
+
+  <div style="max-width:700px;margin:0 auto">
+    <div class="calculator-box reveal">
+      <div id="photo-alert" class="alert"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><i class="fas fa-phone" style="color:var(--primary)"></i> رقم الهاتف</label>
+          <input type="tel" id="photo-phone" class="form-input" placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-user" style="color:var(--primary)"></i> أو الاسم</label>
+          <input type="text" id="photo-name" class="form-input" placeholder="أدخل اسمك الكامل">
+        </div>
+      </div>
+
+      <button class="btn-gold" style="width:100%" onclick="searchPhotos()">
+        <i class="fas fa-search"></i> البحث عن صوري
+      </button>
+
+      <div id="photo-status" style="display:none;justify-content:center;align-items:center;gap:14px;padding:30px;color:var(--text-sec)">
+        <span class="spinner"></span>
+        <span>جاري البحث عن صورك...</span>
+      </div>
+    </div>
+
+    <div class="photo-results" id="photo-results"></div>
+
+    <!-- Upload area for future use -->
+    <div style="margin-top:30px;text-align:center">
+      <p style="color:var(--text-sec);font-size:0.9rem">
+        <i class="fas fa-info-circle" style="color:var(--primary)"></i>
+        هل تريد إضافة صورك؟ 
+        <a href="https://wa.me/201093319693?text=أريد رفع صور رحلتي" target="_blank" style="color:var(--primary);text-decoration:none;font-weight:700">تواصل معنا عبر واتساب</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TESTIMONIALS ════════ -->
+<section id="reviews">
+  <h2 class="section-title gradient-text reveal">ماذا يقول عملاؤنا</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <p class="section-subtitle reveal">أكثر من 5000 حاج ومعتمر شاركونا رحلاتهم الروحانية — هذه قصصهم</p>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">تجربة رائعة لا تُنسى والحمد لله. الخدمة كانت ممتازة والفريق كان محترفاً جداً في التعامل. سأحجز معكم مرة أخرى بإذن الله.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">أ م</div>
+        <div>
+          <div class="author-name">أحمد محمد السيد</div>
+          <div class="author-trip">عمرة البريميوم — يناير 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">أفضل شركة سياحة تعاملت معها في حياتي. الترتيبات كانت مثالية والمشايخ المرافقون كانوا من خيرة العلماء. شكراً إيجبت دودو!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ف ح</div>
+        <div>
+          <div class="author-name">فاطمة حسن النور</div>
+          <div class="author-trip">رحلة الحج — يونيو 2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">رحلة عمرة رمضان كانت من أجمل تجارب حياتي. الجو الإيماني والخدمة الراقية والفريق المتميز — كل شيء كان فوق التوقعات.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">م ع</div>
+        <div>
+          <div class="author-name">محمود عبد الرحمن</div>
+          <div class="author-trip">عمرة رمضان — مارس 2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">كنت خايفة من السفر لأول مرة بدون أهلي لكن مع إيجبت دودو حسيت بالأمان من أول لحظة. الفريق كان معنا في كل خطوة.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">س ك</div>
+        <div>
+          <div class="author-name">سارة خالد إبراهيم</div>
+          <div class="author-trip">عمرة الاقتصادية — فبراير 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★☆</div>
+      <p class="testimonial-text">خدمة ممتازة وأسعار معقولة جداً مقارنة بالشركات الأخرى. الفندق كان قريب من الحرم وكان ذلك أهم شيء بالنسبة لنا كعائلة.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ع إ</div>
+        <div>
+          <div class="author-name">عمر إبراهيم طه</div>
+          <div class="author-trip">باقة العائلة — ديسمبر 2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">حجزت لوالديّ الكريمين رحلة الحج وكان أسعد يوم في حياتي حين رأيت فرحتهم. شكراً إيجبت دودو على هذه الرعاية الاستثنائية.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">ن م</div>
+        <div>
+          <div class="author-name">نرمين محمد علي</div>
+          <div class="author-trip">رحلة الحج — مايو 2024</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<section id="faq" style="background:linear-gradient(135deg,rgba(13,18,32,0.5),rgba(6,9,15,0.5))">
+  <h2 class="section-title gradient-text reveal">الأسئلة الشائعة</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>ما هي المستندات المطلوبة للعمرة؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        المستندات المطلوبة: جواز سفر ساري المفعول (لمدة 6 أشهر على الأقل)، صورة شخصية خلفية بيضاء، وللمرأة أقل من 45 سنة يلزم وجود محرم معها. نحن نتولى إجراءات التأشيرة بالكامل نيابة عنك.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>كم الوقت المطلوب لتجهيز الأوراق؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        عادةً يستغرق تجهيز جميع الأوراق والتأشيرة من 7 إلى 14 يوم عمل. ننصح بالتقديم مبكراً لضمان مكانك خاصةً في مواسم الذروة كرمضان والحج.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>هل يمكن التقسيط في الدفع؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        نعم! نوفر نظام تقسيط مريح. يمكن دفع مقدم حجز يبدأ من 20% من قيمة الباقة، والباقي على أقساط مريحة حتى موعد السفر. تواصل معنا لمعرفة التفاصيل.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>ماذا يحدث إذا احتجت مساعدة أثناء الرحلة؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        فريقنا متواجد معك طوال الرحلة 24/7. كما أن لدينا خط دعم طارئ يعمل على مدار الساعة يمكنك التواصل معه في أي وقت عبر الواتساب أو الهاتف المباشر.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>هل الأسعار شاملة لجميع الخدمات؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        نعم، أسعارنا شفافة وشاملة للطيران والفندق والمواصلات والمرشد ووجبات حسب كل باقة. لا توجد أي رسوم مخفية. قبل الحجز ستحصل على تفصيل كامل لما تشمله الباقة.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>هل هناك خصومات للمجموعات؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        بالطبع! نوفر خصم 10% للمجموعات من 3 أفراد فأكثر، وللمجموعات الكبيرة (+10 أفراد) اتصل بنا للحصول على عروض مخصصة. كما يوجد عروض خاصة للعائلات الكريمة.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ CONTACT ════════ -->
+<section id="contact">
+  <h2 class="section-title gradient-text reveal">تواصل معنا</h2>
+  <div class="ornament reveal">✦ ✦ ✦</div>
+  <p class="section-subtitle reveal">نحن هنا لمساعدتك في كل خطوة — فريقنا متاح 24 ساعة 7 أيام في الأسبوع</p>
+
+  <div class="contact-grid">
+    <div class="contact-card reveal">
+      <div class="cc-icon"><i class="fab fa-whatsapp" style="color:#25d366"></i></div>
+      <h3>واتساب (الأسرع)</h3>
+      <div class="value"><a href="https://wa.me/201093319693" target="_blank" style="color:inherit">01093319693</a></div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="cc-icon"><i class="fas fa-phone"></i></div>
+      <h3>هاتف مباشر</h3>
+      <div class="value site-phone">01093319693</div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="cc-icon"><i class="fas fa-envelope"></i></div>
+      <h3>البريد الإلكتروني</h3>
+      <div class="value site-email" style="font-size:1rem">info@egyptdodo.com</div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="cc-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <h3>العنوان</h3>
+      <div class="value site-address" style="font-size:0.95rem">مصر — متاح في جميع المحافظات</div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="cc-icon"><i class="fas fa-clock"></i></div>
+      <h3>ساعات العمل</h3>
+      <div class="value site-hours" style="font-size:0.95rem">24 ساعة / 7 أيام</div>
+    </div>
+    <div class="contact-card reveal" style="cursor:pointer" onclick="openWhatsApp('أريد الاستفسار عن رحلات العمرة والحج')">
+      <div class="cc-icon"><i class="fas fa-comment-dots" style="color:var(--primary)"></i></div>
+      <h3>ابدأ محادثة</h3>
+      <div class="value" style="font-size:0.95rem;color:#25d366">اضغط هنا للتواصل الفوري</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <div style="width:48px;height:48px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🕌</div>
+        <div>
+          <div class="gradient-text" style="font-size:1.2rem;font-weight:900">إيجبت دودو تراڤيل</div>
+          <div style="color:var(--text-sec);font-size:0.8rem">Egypt Dodo Travel</div>
+        </div>
+      </div>
+      <p>نقدم أفضل خدمات السياحة الدينية من عمرة وحج بأسعار تنافسية وخدمة راقية، موثوقون منذ أكثر من 12 عاماً.</p>
+      <div class="footer-social">
+        <a href="https://wa.me/201093319693" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col reveal">
+      <h3>روابط سريعة</h3>
+      <a href="#home"><i class="fas fa-angle-left"></i> الرئيسية</a>
+      <a href="#packages"><i class="fas fa-angle-left"></i> برامج العمرة</a>
+      <a href="#booking"><i class="fas fa-angle-left"></i> احجز رحلتك</a>
+      <a href="#calculator"><i class="fas fa-angle-left"></i> احسب التكلفة</a>
+      <a href="#gallery"><i class="fas fa-angle-left"></i> صور رحلتك</a>
+    </div>
+
+    <div class="footer-col reveal">
+      <h3>برامجنا</h3>
+      <a href="#packages"><i class="fas fa-angle-left"></i> عمرة الاقتصادية</a>
+      <a href="#packages"><i class="fas fa-angle-left"></i> عمرة البريميوم</a>
+      <a href="#packages"><i class="fas fa-angle-left"></i> عمرة رمضان</a>
+      <a href="#packages"><i class="fas fa-angle-left"></i> رحلة الحج</a>
+      <a href="#packages"><i class="fas fa-angle-left"></i> باقة العائلة</a>
+    </div>
+
+    <div class="footer-col reveal">
+      <h3>تواصل معنا</h3>
+      <a href="https://wa.me/201093319693" target="_blank"><i class="fab fa-whatsapp" style="color:#25d366"></i> واتساب: 01093319693</a>
+      <a href="#"><i class="fas fa-envelope"></i> info@egyptdodo.com</a>
+      <a href="#"><i class="fas fa-map-marker-alt"></i> مصر — جميع المحافظات</a>
+      <a href="#"><i class="fas fa-clock"></i> متاح 24/7</a>
+      <a href="admin.html" style="color:var(--text-muted);font-size:0.8rem;margin-top:10px"><i class="fas fa-lock"></i> لوحة الإدارة</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 إيجبت دودو تراڤيل — جميع الحقوق محفوظة</span>
+    <span>صُنع بـ <span style="color:var(--primary)">❤</span> في مصر</span>
+  </div>
+</footer>
+
+<!-- ════════ MARKETING TICKER ════════ -->
+<div class="marketing-ticker" id="marketingTicker"></div>
+
+<!-- ════════ WHATSAPP FAB ════════ -->
+<div class="whatsapp-fab">
+  <a href="https://wa.me/201093319693" id="whatsappFab" class="whatsapp-btn" target="_blank" title="تواصل عبر واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <div class="wa-label">واتساب</div>
+</div>
+
+<!-- ════════ AI CHAT ASSISTANT ════════ -->
+<div class="ai-chat-container">
+  <button class="ai-btn" onclick="toggleAIChat()" title="المساعد الذكي">🤖</button>
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div style="font-size:1.5rem">🤖</div>
+      <div>
+        <div class="ai-header-title">المساعد الذكي</div>
+        <div class="ai-header-sub">متاح دائماً للمساعدة</div>
+      </div>
+    </div>
+    <div class="ai-messages" id="aiMessages"></div>
+    <div class="ai-input-area">
+      <input type="text" id="aiInput" class="ai-input" placeholder="اسألني عن أي شيء..." onkeydown="onAIKeydown(event)">
+      <button class="ai-send" onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script src="js/app.js"></script>
+</body>
+</html>

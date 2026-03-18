@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة | إيجبت دودو تراڤيل</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="bg-animation"></div>
+
+<!-- ════════ LOGIN SCREEN ════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">🕌</div>
+    <h2>لوحة الإدارة</h2>
+    <p>إيجبت دودو تراڤيل — Egypt Dodo Travel</p>
+
+    <div id="login-error" class="alert alert-error"></div>
+
+    <div class="form-group" style="text-align:right">
+      <label>اسم المستخدم</label>
+      <input type="text" id="admin-username" class="form-input" placeholder="admin" value="admin">
+    </div>
+    <div class="form-group" style="text-align:right">
+      <label>كلمة المرور</label>
+      <input type="password" id="admin-password" class="form-input" placeholder="••••••••">
+    </div>
+    <button class="btn-gold" style="width:100%;margin-top:8px;padding:14px" onclick="adminLogin()">
+      <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+    </button>
+    <p style="color:var(--text-muted);font-size:0.82rem;margin-top:18px;text-align:center">
+      <i class="fas fa-lock"></i> دخول مخصص لإدارة الموقع فقط
+    </p>
+  </div>
+</div>
+
+<!-- ════════ ADMIN DASHBOARD ════════ -->
+<div id="adminDashboard">
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">🕌</div>
+        <h2>إيجبت دودو</h2>
+        <p>لوحة التحكم الإدارية</p>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li><a onclick="showSection('dashboard')" class="active"><i class="fas fa-chart-pie"></i> لوحة التحكم</a></li>
+        <li><a onclick="showSection('bookings')"><i class="fas fa-calendar-check"></i> الحجوزات</a></li>
+        <li><a onclick="showSection('trips')"><i class="fas fa-suitcase"></i> الرحلات</a></li>
+        <li><a onclick="showSection('clients')"><i class="fas fa-users"></i> العملاء</a></li>
+        <li><a onclick="showSection('media')"><i class="fas fa-images"></i> الصور والفيديو</a></li>
+        <li><a onclick="showSection('reviews')"><i class="fas fa-star"></i> التقييمات</a></li>
+        <li><a onclick="showSection('cms')"><i class="fas fa-paint-brush"></i> إدارة المحتوى</a></li>
+        <li><a onclick="showSection('settings')"><i class="fas fa-cog"></i> الإعدادات</a></li>
+        <li style="margin-top:16px;border-top:var(--border);padding-top:10px">
+          <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> معاينة الموقع</a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <div style="display:flex;align-items:center;gap:14px">
+          <button class="hamburger-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+          <h1 id="page-title">📊 لوحة التحكم</h1>
+        </div>
+        <div class="top-bar-actions">
+          <div id="admin-alert" class="alert" style="margin:0;min-width:260px"></div>
+          <a href="https://wa.me/201093319693" target="_blank" class="btn-gold" style="padding:10px 20px;font-size:0.9rem">
+            <i class="fab fa-whatsapp"></i> واتساب
+          </a>
+          <div class="top-avatar">ا</div>
+        </div>
+      </div>
+
+      <!-- ═══ DASHBOARD SECTION ═══ -->
+      <div id="dashboard" class="section active">
+
+        <!-- Stats -->
+        <div class="stats-grid-admin">
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">📋</div>
+            <span class="stat-admin-num" id="stat-bookings">—</span>
+            <div class="stat-admin-label">إجمالي الحجوزات</div>
+          </div>
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">⏳</div>
+            <span class="stat-admin-num" id="stat-pending" style="color:var(--warning)">—</span>
+            <div class="stat-admin-label">بانتظار التأكيد</div>
+          </div>
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">✅</div>
+            <span class="stat-admin-num" id="stat-confirmed" style="color:var(--success)">—</span>
+            <div class="stat-admin-label">حجوزات مؤكدة</div>
+          </div>
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">👥</div>
+            <span class="stat-admin-num" id="stat-clients">—</span>
+            <div class="stat-admin-label">إجمالي العملاء</div>
+          </div>
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">🕌</div>
+            <span class="stat-admin-num" id="stat-trips">—</span>
+            <div class="stat-admin-label">البرامج المتاحة</div>
+          </div>
+          <div class="stat-admin-card">
+            <div class="stat-admin-icon">💰</div>
+            <span class="stat-admin-num" id="stat-revenue" style="font-size:1.3rem">—</span>
+            <div class="stat-admin-label">إجمالي الإيرادات</div>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-container">
+          <div class="card-title"><i class="fas fa-chart-bar"></i> الإيرادات والحجوزات الشهرية</div>
+          <div class="chart-wrap">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card-3d">
+          <div class="card-title"><i class="fas fa-bolt"></i> إجراءات سريعة</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn-gold" onclick="showSection('bookings')"><i class="fas fa-calendar-check"></i> إدارة الحجوزات</button>
+            <button class="btn-outline" onclick="showSection('cms')"><i class="fas fa-paint-brush"></i> تحديث المحتوى</button>
+            <button class="btn-outline" onclick="previewSite()"><i class="fas fa-eye"></i> معاينة الموقع</button>
+            <button class="btn-outline" onclick="exportBookings()"><i class="fas fa-file-csv"></i> تصدير البيانات</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ═══ BOOKINGS SECTION ═══ -->
+      <div id="bookings" class="section">
+        <div class="table-wrap">
+          <div class="table-header">
+            <div class="card-title" style="margin:0"><i class="fas fa-calendar-check"></i> إدارة الحجوزات</div>
+            <div class="table-controls">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="booking-search" placeholder="بحث بالاسم أو الهاتف..." oninput="filterBookings()">
+              </div>
+              <select class="filter-select" id="booking-status-filter" onchange="filterBookings()">
+                <option value="">جميع الحالات</option>
+                <option value="في الانتظار">في الانتظار</option>
+                <option value="مؤكد">مؤكد</option>
+                <option value="مكتمل">مكتمل</option>
+                <option value="ملغي">ملغي</option>
+              </select>
+              <button class="btn-gold" onclick="exportBookings()" style="padding:10px 20px"><i class="fas fa-download"></i> تصدير</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الهاتف</th>
+                  <th>البرنامج</th>
+                  <th>الأفراد</th>
+                  <th>تاريخ السفر</th>
+                  <th>الحالة</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-tbody">
+                <tr><td colspan="8" style="text-align:center;padding:40px"><span class="spinner"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ TRIPS SECTION ═══ -->
+      <div id="trips" class="section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:14px">
+          <div class="card-title" style="margin:0"><i class="fas fa-suitcase"></i> إدارة البرامج والرحلات</div>
+          <button class="btn-gold" onclick="addTrip()"><i class="fas fa-plus"></i> إضافة برنامج جديد</button>
+        </div>
+        <div class="trips-grid" id="trips-grid">
+          <div style="text-align:center;padding:40px;grid-column:1/-1"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+      <!-- ═══ CLIENTS SECTION ═══ -->
+      <div id="clients" class="section">
+        <div class="table-wrap">
+          <div class="table-header">
+            <div class="card-title" style="margin:0"><i class="fas fa-users"></i> إدارة العملاء</div>
+            <div class="table-controls">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="client-search" placeholder="بحث بالاسم أو الهاتف..." oninput="filterClients()">
+              </div>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الهاتف</th>
+                  <th>البريد</th>
+                  <th>عدد الرحلات</th>
+                  <th>إجمالي المدفوع</th>
+                  <th>آخر رحلة</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="clients-tbody">
+                <tr><td colspan="8" style="text-align:center;padding:40px"><span class="spinner"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ MEDIA SECTION ═══ -->
+      <div id="media" class="section">
+        <div class="card-3d">
+          <div class="card-title"><i class="fas fa-images"></i> إدارة الصور والفيديو</div>
+
+          <div style="border:3px dashed rgba(212,175,55,0.3);border-radius:16px;padding:60px;text-align:center;cursor:pointer;transition:all 0.3s;background:rgba(212,175,55,0.03)"
+            onmouseover="this.style.borderColor='var(--primary)';this.style.background='var(--primary-glow2)'"
+            onmouseout="this.style.borderColor='rgba(212,175,55,0.3)';this.style.background='rgba(212,175,55,0.03)'">
+            <div style="font-size:3rem;margin-bottom:16px">📁</div>
+            <h3 style="color:var(--primary);margin-bottom:10px">ارفع صور رحلات العملاء</h3>
+            <p style="color:var(--text-sec);margin-bottom:20px">اسحب الصور هنا أو اضغط للاختيار</p>
+            <input type="file" accept="image/*" multiple style="display:none" id="media-upload">
+            <button class="btn-gold" onclick="document.getElementById('media-upload').click()">
+              <i class="fas fa-upload"></i> رفع الصور
+            </button>
+          </div>
+
+          <div style="margin-top:28px;padding:22px;background:rgba(102,126,234,0.08);border:1px solid rgba(102,126,234,0.2);border-radius:14px">
+            <h3 style="color:#667eea;margin-bottom:10px"><i class="fas fa-info-circle"></i> ملاحظة</h3>
+            <p style="color:var(--text-sec);font-size:0.93rem;line-height:1.7">
+              لرفع الصور ومشاركتها مع العملاء يلزم تفعيل قاعدة بيانات Supabase من صفحة الإعدادات.
+              يمكنك إضافة جدول <strong style="color:var(--primary)">photos</strong> بالحقول: id, client_name, phone, url, trip, date.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ REVIEWS SECTION ═══ -->
+      <div id="reviews" class="section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:14px">
+          <div class="card-title" style="margin:0"><i class="fas fa-star"></i> إدارة التقييمات</div>
+        </div>
+        <div id="reviews-container">
+          <div style="text-align:center;padding:40px"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+      <!-- ═══ CMS SECTION ═══ -->
+      <div id="cms" class="section">
+        <div class="cms-section">
+
+          <!-- Basic Info -->
+          <div class="form-section">
+            <h3><i class="fas fa-id-card"></i> معلومات الموقع الأساسية</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-image"></i> رابط الشعار (Logo URL)</label>
+                <input type="url" id="cms-logo-url" class="form-input" placeholder="https://...">
+                <input type="file" accept="image/*" style="display:none" id="cms-logo-file" onchange="previewAndUpload('logo',this)">
+                <button class="btn-outline" style="margin-top:10px;padding:8px 16px;font-size:0.85rem" onclick="document.getElementById('cms-logo-file').click()">
+                  <i class="fas fa-upload"></i> رفع صورة
+                </button>
+                <div class="img-preview" id="cms-logo-preview"><img id="cms-logo-img" src="" alt="logo"></div>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-image"></i> صورة غلاف الهيرو (Cover URL)</label>
+                <input type="url" id="cms-cover-url" class="form-input" placeholder="https://...">
+                <input type="file" accept="image/*" style="display:none" id="cms-cover-file" onchange="previewAndUpload('cover',this)">
+                <button class="btn-outline" style="margin-top:10px;padding:8px 16px;font-size:0.85rem" onclick="document.getElementById('cms-cover-file').click()">
+                  <i class="fas fa-upload"></i> رفع صورة
+                </button>
+                <div class="img-preview" id="cms-cover-preview"><img id="cms-cover-img" src="" alt="cover"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-heading"></i> رسالة الترحيب (عنوان الهيرو)</label>
+              <input type="text" id="cms-welcome" class="form-input" placeholder="رحلتك الروحانية تبدأ من هنا">
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="form-section">
+            <h3><i class="fas fa-address-book"></i> معلومات التواصل</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fab fa-whatsapp" style="color:#25d366"></i> رقم الواتساب</label>
+                <input type="text" id="cms-whatsapp" class="form-input" placeholder="201093319693">
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف</label>
+                <input type="text" id="cms-phone" class="form-input" placeholder="01093319693">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                <input type="email" id="cms-email" class="form-input" placeholder="info@egyptdodo.com">
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-clock"></i> ساعات العمل</label>
+                <input type="text" id="cms-hours" class="form-input" placeholder="24 ساعة / 7 أيام">
+              </div>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> العنوان</label>
+              <input type="text" id="cms-address" class="form-input" placeholder="مصر — القاهرة">
+            </div>
+          </div>
+
+          <!-- Marketing Messages -->
+          <div class="form-section">
+            <h3><i class="fas fa-bullhorn"></i> الرسائل التسويقية</h3>
+            <div id="cms-messages-list"></div>
+            <button class="btn-outline" style="margin-top:12px" onclick="addMarketingMsg()">
+              <i class="fas fa-plus"></i> إضافة رسالة جديدة
+            </button>
+          </div>
+
+          <!-- Packages -->
+          <div class="form-section">
+            <h3><i class="fas fa-suitcase"></i> باقات الرحلات</h3>
+            <p style="color:var(--text-sec);font-size:0.88rem;margin-bottom:16px">الأعمدة: الأيقونة | الاسم | السعر | النجوم (1-5)</p>
+            <div id="cms-packages-list"></div>
+            <button class="btn-outline" style="margin-top:12px" onclick="addPackage()">
+              <i class="fas fa-plus"></i> إضافة باقة جديدة
+            </button>
+          </div>
+
+          <!-- Save -->
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <button class="btn-gold" style="padding:14px 36px;font-size:1rem" onclick="saveCMS()">
+              <i class="fas fa-save"></i> حفظ جميع التغييرات
+            </button>
+            <button class="btn-outline" onclick="previewSite()">
+              <i class="fas fa-eye"></i> معاينة الموقع
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ SETTINGS SECTION ═══ -->
+      <div id="settings" class="section">
+        <div class="form-section" style="max-width:650px">
+          <h3><i class="fas fa-database"></i> إعدادات Supabase (قاعدة البيانات)</h3>
+          <div class="form-group">
+            <label>Supabase Project URL</label>
+            <input type="url" id="settings-sb-url" class="form-input" placeholder="https://xxxx.supabase.co">
+          </div>
+          <div class="form-group">
+            <label>Supabase Anon Key</label>
+            <input type="text" id="settings-sb-key" class="form-input" placeholder="eyJhbGciOiJIUzI1NiIs...">
+          </div>
+          <div style="background:rgba(102,126,234,0.08);border:1px solid rgba(102,126,234,0.2);border-radius:12px;padding:18px;margin-bottom:20px">
+            <h4 style="color:#667eea;margin-bottom:10px"><i class="fas fa-info-circle"></i> جداول Supabase المطلوبة</h4>
+            <div style="font-family:monospace;font-size:0.82rem;color:var(--text-sec);line-height:2">
+              <div>📋 <strong style="color:var(--primary)">bookings</strong> — id, name, phone, email, package, people, travel_date, notes, status, created_at</div>
+              <div>👥 <strong style="color:var(--primary)">clients</strong> — id, name, phone, email, trips, total_spent, last_trip</div>
+              <div>🕌 <strong style="color:var(--primary)">trips</strong> — id, name, icon, price, stars, available, seats</div>
+              <div>⭐ <strong style="color:var(--primary)">reviews</strong> — id, name, rating, comment, trip, date, approved</div>
+              <div>🖼️ <strong style="color:var(--primary)">photos</strong> — id, client_name, phone, url, trip, date</div>
+              <div>⚙️ <strong style="color:var(--primary)">site_settings</strong> — id, settings (jsonb)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section" style="max-width:650px">
+          <h3><i class="fas fa-key"></i> تغيير كلمة المرور</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>كلمة المرور الجديدة</label>
+              <input type="password" id="settings-new-pass" class="form-input" placeholder="6 أحرف على الأقل">
+            </div>
+            <div class="form-group">
+              <label>تأكيد كلمة المرور</label>
+              <input type="password" id="settings-confirm-pass" class="form-input" placeholder="أعد الكتابة">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-gold" style="padding:14px 36px;font-size:1rem" onclick="saveSettings()">
+          <i class="fas fa-save"></i> حفظ الإعدادات
+        </button>
+      </div>
+
+    </main><!-- /main-content -->
+  </div><!-- /admin-layout -->
+</div><!-- /adminDashboard -->
+
+<!-- ════════ CONFIRM DELETE MODAL ════════ -->
+<div class="modal" id="confirm-modal">
+  <div class="modal-content">
+    <div class="modal-icon">⚠️</div>
+    <h3>تأكيد الحذف</h3>
+    <p>هل أنت متأكد من حذف هذا العنصر؟ لا يمكن التراجع عن هذه العملية.</p>
+    <div class="modal-actions">
+      <button class="btn-danger" onclick="executeDelete()"><i class="fas fa-trash"></i> نعم، احذف</button>
+      <button class="btn-outline" onclick="closeConfirmModal()"><i class="fas fa-times"></i> إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/admin.js"></script>
+</body>
+</html>
